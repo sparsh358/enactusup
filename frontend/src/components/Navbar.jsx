@@ -29,18 +29,20 @@ export const Navbar = () => {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-white shadow-lg' : 'bg-white/90 backdrop-blur-sm'
+        isScrolled 
+          ? 'bg-black/90 backdrop-blur-lg shadow-lg shadow-amber-500/10 border-b border-amber-500/20' 
+          : 'bg-black/50 backdrop-blur-sm'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <Link to="/" className="flex items-center space-x-3">
-            <div className="w-10 h-10 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-xl">E</span>
+            <div className="w-10 h-10 bg-gradient-to-br from-amber-500 to-yellow-500 rounded-lg flex items-center justify-center shadow-lg shadow-amber-500/30">
+              <span className="text-black font-bold text-xl">E</span>
             </div>
             <div className="flex flex-col">
-              <span className="font-bold text-gray-900 text-lg leading-none">Enactus</span>
-              <span className="text-xs text-gray-600">Shaheed Rajguru</span>
+              <span className="font-bold text-white text-lg leading-none">Enactus</span>
+              <span className="text-xs text-amber-400">Shaheed Rajguru</span>
             </div>
           </Link>
 
@@ -52,13 +54,13 @@ export const Navbar = () => {
                 to={link.path}
                 className={`text-sm font-medium transition-colors relative group ${
                   location.pathname === link.path
-                    ? 'text-indigo-600'
-                    : 'text-gray-700 hover:text-indigo-600'
+                    ? 'text-amber-400'
+                    : 'text-gray-300 hover:text-amber-400'
                 }`}
               >
                 {link.name}
                 <span
-                  className={`absolute -bottom-1 left-0 w-full h-0.5 bg-indigo-600 transform transition-transform ${
+                  className={`absolute -bottom-1 left-0 w-full h-0.5 bg-amber-500 transform transition-transform ${
                     location.pathname === link.path ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
                   }`}
                 />
@@ -66,7 +68,7 @@ export const Navbar = () => {
             ))}
             <Link
               to="/contact"
-              className="bg-indigo-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-indigo-700 transition-colors"
+              className="bg-gradient-to-r from-amber-500 to-yellow-500 text-black px-4 py-2 rounded-lg text-sm font-bold hover:from-amber-400 hover:to-yellow-400 transition-all shadow-lg shadow-amber-500/30"
             >
               Contact Us
             </Link>
@@ -75,7 +77,7 @@ export const Navbar = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden p-2 rounded-lg text-gray-700 hover:bg-gray-100"
+            className="md:hidden p-2 rounded-lg text-amber-400 hover:bg-amber-500/10"
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -89,7 +91,7 @@ export const Navbar = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-white border-t"
+            className="md:hidden bg-black/95 backdrop-blur-lg border-t border-amber-500/20"
           >
             <div className="px-4 py-4 space-y-3">
               {navLinks.map((link) => (
@@ -99,8 +101,8 @@ export const Navbar = () => {
                   onClick={() => setIsMobileMenuOpen(false)}
                   className={`block px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
                     location.pathname === link.path
-                      ? 'bg-indigo-50 text-indigo-600'
-                      : 'text-gray-700 hover:bg-gray-50'
+                      ? 'bg-amber-500/20 text-amber-400 border border-amber-500/30'
+                      : 'text-gray-300 hover:bg-amber-500/10'
                   }`}
                 >
                   {link.name}
@@ -109,7 +111,7 @@ export const Navbar = () => {
               <Link
                 to="/contact"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="block w-full bg-indigo-600 text-white px-4 py-2 rounded-lg text-sm font-medium text-center hover:bg-indigo-700"
+                className="block w-full bg-gradient-to-r from-amber-500 to-yellow-500 text-black px-4 py-2 rounded-lg text-sm font-bold text-center hover:from-amber-400 hover:to-yellow-400"
               >
                 Contact Us
               </Link>
