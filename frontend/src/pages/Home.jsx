@@ -281,8 +281,11 @@ const Home = () => {
       <ImpactCounter stats={impactStats} />
 
       {/* Testimonials Section */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-20 bg-black relative">
+        {/* Background Glow */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(251,191,36,0.1),transparent_70%)]" />
+        
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -290,11 +293,14 @@ const Home = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Real Voices, Real Transformations
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+              Real Voices, Real{' '}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-yellow-400">
+                Transformations
+              </span>
             </h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-indigo-600 to-purple-600 mx-auto mb-6" />
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+            <div className="w-24 h-1 bg-gradient-to-r from-amber-500 to-yellow-500 mx-auto mb-6" />
+            <p className="text-lg text-gray-400 max-w-3xl mx-auto">
               Hear from the individuals whose lives have been transformed through our programs
             </p>
           </motion.div>
@@ -313,37 +319,47 @@ const Home = () => {
             className="text-center mt-12"
           >
             <Link to="/impact">
-              <button className="bg-white text-indigo-600 px-8 py-3 rounded-xl font-semibold border-2 border-indigo-600 hover:bg-indigo-50 transition-colors inline-flex items-center space-x-2">
+              <motion.button 
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-transparent text-amber-400 px-8 py-3 rounded-xl font-bold border-2 border-amber-500 hover:bg-amber-500/10 transition-colors inline-flex items-center space-x-2"
+              >
                 <span>Read More Stories</span>
                 <ArrowRight size={20} />
-              </button>
+              </motion.button>
             </Link>
           </motion.div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-600 text-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <section className="py-20 bg-gradient-to-br from-amber-600 via-yellow-600 to-orange-600 text-black relative overflow-hidden">
+        {/* Animated Background Pattern */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute inset-0 bg-[linear-gradient(45deg,black_25%,transparent_25%,transparent_75%,black_75%,black),linear-gradient(45deg,black_25%,transparent_25%,transparent_75%,black_75%,black)] bg-[size:60px_60px] bg-[position:0_0,30px_30px]" />
+        </div>
+        
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
+            <Users className="mx-auto mb-6" size={64} strokeWidth={1.5} />
             <h2 className="text-3xl md:text-4xl font-bold mb-6">
               Be Part of the Change
             </h2>
-            <p className="text-lg mb-8 text-indigo-100">
+            <p className="text-lg mb-8 text-black/80">
               Join us in creating sustainable solutions that transform communities. 
               Whether you want to volunteer, partner, or support our cause – we'd love to hear from you.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/get-involved">
                 <motion.button
-                  whileHover={{ scale: 1.05 }}
+                  whileHover={{ scale: 1.05, boxShadow: "0 20px 40px rgba(0,0,0,0.3)" }}
                   whileTap={{ scale: 0.95 }}
-                  className="w-full sm:w-auto bg-white text-indigo-600 px-8 py-4 rounded-xl font-semibold hover:bg-gray-100 transition-colors shadow-lg"
+                  className="w-full sm:w-auto bg-black text-amber-400 px-8 py-4 rounded-xl font-bold hover:bg-gray-900 transition-colors shadow-lg border-2 border-black"
                 >
                   Get Involved
                 </motion.button>
@@ -352,7 +368,7 @@ const Home = () => {
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="w-full sm:w-auto bg-transparent text-white px-8 py-4 rounded-xl font-semibold border-2 border-white hover:bg-white/10 transition-colors"
+                  className="w-full sm:w-auto bg-transparent text-black px-8 py-4 rounded-xl font-bold border-2 border-black hover:bg-black/10 transition-colors"
                 >
                   Contact Us
                 </motion.button>
