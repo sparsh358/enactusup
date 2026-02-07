@@ -164,7 +164,7 @@ const Home = () => {
       </section>
 
       {/* About Section */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-gradient-to-b from-black via-gray-900 to-black">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -173,9 +173,11 @@ const Home = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Who We Are</h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-indigo-600 to-purple-600 mx-auto mb-6" />
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+              Who We <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-yellow-400">Are</span>
+            </h2>
+            <div className="w-24 h-1 bg-gradient-to-r from-amber-500 to-yellow-500 mx-auto mb-6" />
+            <p className="text-lg text-gray-400 max-w-3xl mx-auto">
               Enactus Shaheed Rajguru is a student-led social entrepreneurship cell established in 2017 at 
               Shaheed Rajguru College of Applied Sciences for Women, University of Delhi.
             </p>
@@ -187,19 +189,22 @@ const Home = () => {
                 icon: Target,
                 title: 'Our Mission',
                 description: 'Unite students, academic leaders, and business professionals to create sustainable entrepreneurial solutions.',
-                color: 'indigo'
+                color: 'amber',
+                gradient: 'from-amber-500/20 to-yellow-500/20'
               },
               {
-                icon: Sparkles,
+                icon: Zap,
                 title: 'Our Philosophy',
                 description: 'Entrepreneurial Action – equipping students to turn ideas into scalable, measurable impact.',
-                color: 'purple'
+                color: 'yellow',
+                gradient: 'from-yellow-500/20 to-orange-500/20'
               },
               {
-                icon: TrendingUp,
+                icon: Award,
                 title: 'Our Impact',
                 description: 'From a small team to a leading cell known for innovation, sustainability, and tangible results.',
-                color: 'pink'
+                color: 'orange',
+                gradient: 'from-orange-500/20 to-amber-500/20'
               }
             ].map((item, index) => (
               <motion.div
@@ -208,13 +213,14 @@ const Home = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="bg-gradient-to-br from-gray-50 to-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow"
+                whileHover={{ y: -10, transition: { duration: 0.3 } }}
+                className={`bg-gradient-to-br ${item.gradient} backdrop-blur-sm border border-${item.color}-500/20 p-8 rounded-2xl shadow-lg hover:shadow-2xl hover:shadow-${item.color}-500/20 transition-all`}
               >
-                <div className={`inline-flex p-3 rounded-xl bg-${item.color}-100 mb-4`}>
-                  <item.icon className={`text-${item.color}-600`} size={28} />
+                <div className={`inline-flex p-4 rounded-xl bg-${item.color}-500/20 mb-4 border border-${item.color}-500/30`}>
+                  <item.icon className={`text-${item.color}-400`} size={28} />
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">{item.title}</h3>
-                <p className="text-gray-600 leading-relaxed">{item.description}</p>
+                <h3 className="text-xl font-bold text-white mb-3">{item.title}</h3>
+                <p className="text-gray-400 leading-relaxed">{item.description}</p>
               </motion.div>
             ))}
           </div>
@@ -222,8 +228,12 @@ const Home = () => {
       </section>
 
       {/* Projects Section */}
-      <section className="py-20 bg-gradient-to-br from-gray-50 to-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-20 bg-black relative">
+        {/* Decorative Elements */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(251,191,36,0.1),transparent_50%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_50%,rgba(234,179,8,0.1),transparent_50%)]" />
+        
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -231,9 +241,11 @@ const Home = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Projects</h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-indigo-600 to-purple-600 mx-auto mb-6" />
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+              Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-yellow-400">Projects</span>
+            </h2>
+            <div className="w-24 h-1 bg-gradient-to-r from-amber-500 to-yellow-500 mx-auto mb-6" />
+            <p className="text-lg text-gray-400 max-w-3xl mx-auto">
               Transforming lives through innovative, sustainable solutions across diverse communities
             </p>
           </motion.div>
@@ -252,10 +264,14 @@ const Home = () => {
             className="text-center mt-12"
           >
             <Link to="/projects">
-              <button className="bg-indigo-600 text-white px-8 py-3 rounded-xl font-semibold hover:bg-indigo-700 transition-colors inline-flex items-center space-x-2">
+              <motion.button 
+                whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(251, 191, 36, 0.5)" }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-gradient-to-r from-amber-500 to-yellow-500 text-black px-8 py-3 rounded-xl font-bold hover:from-amber-400 hover:to-yellow-400 transition-all inline-flex items-center space-x-2 shadow-lg shadow-amber-500/30"
+              >
                 <span>View All Projects</span>
                 <ArrowRight size={20} />
-              </button>
+              </motion.button>
             </Link>
           </motion.div>
         </div>
