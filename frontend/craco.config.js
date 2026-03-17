@@ -61,6 +61,15 @@ const webpackConfig = {
         ],
       };
 
+      // Update HtmlWebpackPlugin to use root index.html instead of public/index.html
+      const HtmlWebpackPlugin = require('html-webpack-plugin');
+      const htmlPlugin = webpackConfig.plugins.find(
+        (plugin) => plugin.constructor.name === 'HtmlWebpackPlugin'
+      );
+      if (htmlPlugin) {
+        htmlPlugin.options.template = path.resolve(__dirname, '../index.html');
+      }
+
       // Add health check plugin to webpack if enabled
       if (config.enableHealthCheck && healthPluginInstance) {
         webpackConfig.plugins.push(healthPluginInstance);
