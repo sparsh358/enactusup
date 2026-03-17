@@ -1,22 +1,7 @@
 {
-  "buildCommand": "cd frontend && npm run build",
-  "outputDirectory": "frontend/build",
+  "buildCommand": "npm run build",
+  "outputDirectory": "build",
   "framework": "react",
-  "nodejs": "18",
-  "env": {
-    "REACT_APP_BACKEND_URL": "@react_app_backend_url"
-  },
-  "headers": [
-    {
-      "source": "/(.*)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=3600"
-        }
-      ]
-    }
-  ],
   "rewrites": [
     {
       "source": "/(.*)",
